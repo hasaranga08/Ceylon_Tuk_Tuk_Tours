@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Camera, X, Maximize2 } from 'lucide-react';
+import { getAssetPath } from '../utils/assetPath';
 
 interface GalleryItem {
   src: string;
@@ -13,37 +14,37 @@ export const Gallery: React.FC = () => {
 
   const photos: GalleryItem[] = [
     {
-      src: '/home.jpeg',
+      src: getAssetPath('/home.jpeg'),
       alt: 'Authentic Sri Lankan Tuk Tuk with canopy roof on coastal road beside palm trees',
       caption: 'The authentic Sri Lankan three-wheeler ready for a coastal adventure.',
       location: 'Negombo Coastal Road',
     },
     {
-      src: '/images/fishing_boats.jpg',
+      src: getAssetPath('/images/fishing_boats.jpg'),
       alt: 'Traditional wooden outrigger fishing boats resting on Negombo beach',
       caption: 'Centuries-old wooden outrigger boats resting on Negombo beach after morning catch.',
       location: 'Lellama Beach, Negombo',
     },
     {
-      src: '/images/red_mosque_colombo.jpg',
+      src: getAssetPath('/images/red_mosque_colombo.jpg'),
       alt: 'Iconic red and white striped Jami Ul-Alfar Mosque in Pettah, Colombo',
       caption: 'Navigating the historic trading avenues and candy-striped Red Mosque of Pettah.',
       location: 'Pettah Bazaars, Colombo',
     },
     {
-      src: '/images/mangrove_lagoon.jpg',
+      src: getAssetPath('/images/mangrove_lagoon.JPG'),
       alt: 'Muthurajawela wetlands quiet boat canal in morning light',
       caption: 'Serene mangrove canals of Muthurajawela marsh bird sanctuary.',
       location: 'Muthurajawela Lagoon',
     },
     {
-      src: '/images/galle_face.jpg',
+      src: getAssetPath('/images/galle_face.jpg'),
       alt: 'Golden hour sunset over the Indian Ocean at Galle Face Green',
       caption: 'Finishing the day with fresh King Coconut as the sun sets over the ocean.',
       location: 'Galle Face Green, Colombo',
     },
     {
-      src: '/images/ella_nine_arch.jpg',
+      src: getAssetPath('/images/Ella Day Experience.WEBP'),
       alt: 'Historic Nine Arch Bridge surrounded by lush tea hills in Ella',
       caption: 'Scenic colonial viaduct and mist-shrouded green hills of Ella.',
       location: 'Ella Hill Country',

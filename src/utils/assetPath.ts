@@ -14,15 +14,24 @@ export function getAssetPath(path: string | undefined | null): string {
     return path;
   }
 
-  const base = import.meta.env.BASE_URL || '/';
+  let base = '/Ceylon-Tuk-Tuk-Tours/';
+  try {
+    if (typeof import.meta !== 'undefined' && import.meta && import.meta.env && import.meta.env.BASE_URL) {
+      base = import.meta.env.BASE_URL;
+    }
+  } catch {
+    base = '/Ceylon-Tuk-Tuk-Tours/';
+  }
 
-  // If already prefixed with base (and base is not just '/'), return as is
-  if (base !== '/' && path.startsWith(base)) {
-    return path;
+  const cleanBase = base.endsWith('/') ? base : `${base}/`;
+  const baseWithoutLeadingSlash = cleanBase.startsWith('/') ? cleanBase.slice(1) : cleanBase;
+
+  // If already prefixed with base, return with leading slash
+  if (cleanBase !== '/' && (path.startsWith(cleanBase) || path.startsWith(baseWithoutLeadingSlash))) {
+    return path.startsWith('/') ? path : `/${path}`;
   }
 
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-  const cleanBase = base.endsWith('/') ? base : `${base}/`;
   return `${cleanBase}${cleanPath}`;
 }
 
