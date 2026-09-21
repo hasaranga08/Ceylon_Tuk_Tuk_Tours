@@ -12,6 +12,7 @@ import {
   SriLankaActivity,
   ActivityCategory,
 } from '../types';
+import { resolveAssetPaths } from '../utils/assetPath';
 
 /**
  * ==============================================================================
@@ -1805,3 +1806,15 @@ export const testimonialsData: Testimonial[] = [
     isSampleReview: true,
   },
 ];
+
+// Normalize asset paths with Vite base path for GitHub Pages and production
+resolveAssetPaths(siteConfig);
+resolveAssetPaths(toursData);
+resolveAssetPaths(destinationsData);
+resolveAssetPaths(vehiclesData);
+resolveAssetPaths(multiDayToursData);
+resolveAssetPaths(sriLankaActivitiesData);
+resolveAssetPaths(southCoastActivitiesData);
+resolveAssetPaths(curiousTravelerFeaturesData);
+resolveAssetPaths(experienceHighlights);
+

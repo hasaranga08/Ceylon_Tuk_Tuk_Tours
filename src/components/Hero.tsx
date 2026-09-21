@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { useNavigation } from '../context/NavigationContext';
 import { getWhatsAppUrl } from '../config/siteConfig';
+import { getAssetPath } from '../utils/assetPath';
 
 export const Hero: React.FC = () => {
   const { navigateTo, openInquiryModal } = useNavigation();
@@ -21,7 +22,7 @@ export const Hero: React.FC = () => {
       {/* Background Image with warm tropical overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/home.jpeg"
+          src={getAssetPath('/home.jpeg')}
           alt="Authentic Sri Lankan Tuk Tuk with traditional canopy roof along scenic palm-lined tropical coast"
           className="w-full h-full object-cover object-center md:object-[center_35%] opacity-45 scale-100 transform animate-fade-in"
           loading="eager"

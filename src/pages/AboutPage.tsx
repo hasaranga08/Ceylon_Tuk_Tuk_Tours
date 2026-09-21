@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { siteConfig, getWhatsAppUrl } from '../config/siteConfig';
 import { useNavigation } from '../context/NavigationContext';
+import { getAssetPath } from '../utils/assetPath';
 
 export const AboutPage: React.FC = () => {
   const { navigateTo, openInquiryModal } = useNavigation();
@@ -87,7 +88,7 @@ export const AboutPage: React.FC = () => {
           <div className="lg:col-span-6">
             <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/3] bg-stone-200 border border-stone-200">
               <img
-                src="/images/fishing_boats.jpg"
+                src={getAssetPath('/images/fishing_boats.jpg')}
                 alt="Local Sri Lankan driver and fishermen community in Negombo"
                 className="w-full h-full object-cover"
                 loading="lazy"

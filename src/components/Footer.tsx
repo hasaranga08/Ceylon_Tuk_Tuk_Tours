@@ -2,6 +2,7 @@ import React from 'react';
 import { Compass, MapPin, Phone, Mail, MessageCircle, Clock, ExternalLink } from 'lucide-react';
 import { siteConfig, toursData, getWhatsAppUrl } from '../config/siteConfig';
 import { useNavigation } from '../context/NavigationContext';
+import { getAssetPath } from '../utils/assetPath';
 
 export const Footer: React.FC = () => {
   const { navigateTo } = useNavigation();
@@ -244,7 +245,7 @@ export const Footer: React.FC = () => {
 
           <div className="flex items-center gap-4 text-xs">
             <a
-              href="/robots.txt"
+              href={getAssetPath('/robots.txt')}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-stone-300 transition-colors"
@@ -253,7 +254,7 @@ export const Footer: React.FC = () => {
             </a>
             <span>•</span>
             <a
-              href="/sitemap.xml"
+              href={getAssetPath('/sitemap.xml')}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-stone-300 transition-colors"

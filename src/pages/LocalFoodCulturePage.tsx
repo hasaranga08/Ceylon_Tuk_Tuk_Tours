@@ -24,6 +24,7 @@ import { toursData, getWhatsAppUrl, siteConfig } from '../config/siteConfig';
 import { InquiryForm } from '../components/InquiryForm';
 import { RelatedTours } from '../components/RelatedTours';
 import { useNavigation } from '../context/NavigationContext';
+import { getAssetPath } from '../utils/assetPath';
 
 export const LocalFoodCulturePage: React.FC = () => {
   const { navigateTo, openInquiryModal } = useNavigation();
@@ -95,7 +96,7 @@ export const LocalFoodCulturePage: React.FC = () => {
       description:
         'Watch and listen to the hypnotic clatter of steel blades rhythmically chopping shredded godamba flatbread on a searing cast-iron hot plate, tossed with fresh garden vegetables, eggs, aromatic curry spices, and your choice of tender chicken or cheese.',
       tags: ['Sizzling Hot', 'Vegetarian or Meat', 'Evening Favorite'],
-      image: '/images/koththu.JPG',
+      image: getAssetPath('/images/koththu.JPG'),
     },
     {
       name: 'Crispy Bowl Hoppers (Appa)',
@@ -103,7 +104,7 @@ export const LocalFoodCulturePage: React.FC = () => {
       description:
         'A culinary marvel made from fermented rice flour and silky coconut milk, swirled in deep bowl-shaped wok pans. Try both plain hoppers and rich egg hoppers, topped with freshly ground fiery lunu miris or sweet onion seeni sambal.',
       tags: ['Traditional', 'Gluten-Free Flour', 'Must-Try'],
-      image: '/images/hoppers.JPG',
+      image: getAssetPath('/images/hoppers.JPG'),
     },
     {
       name: 'Warm Pol Roti & Sambals',
@@ -111,7 +112,7 @@ export const LocalFoodCulturePage: React.FC = () => {
       description:
         'Freshly grated coconut hand-kneaded with flour, toasted slowly on dry griddles until golden and fragrant. Served piping hot alongside spicy lunu miris (pounded red onions, dry red chili, salt, and lime juice) and aromatic dhal.',
       tags: ['Coconut Infused', 'Piquant Sambal', 'Comfort Food'],
-      image: '/images/polroti.JPG',
+      image: getAssetPath('/images/polroti.JPG'),
     },
     {
       name: 'Golden Dhal Vadai & Isso Vade',
@@ -119,7 +120,7 @@ export const LocalFoodCulturePage: React.FC = () => {
       description:
         'Bite into crunchy deep-fried lentil patties infused with curry leaves and ginger, or the oceanfront favorite isso vade (spiced lentil cake topped with whole prawns), famously enjoyed by locals along the coastal seawall.',
       tags: ['Crispy Texture', 'Spiced Lentils', 'Seaside Tradition'],
-      image: '/images/issowade.JPG',
+      image: getAssetPath('/images/issowade.JPG'),
     },
     {
       name: 'Sweet Ceylon Treats & Tropical Fruits',
@@ -127,7 +128,7 @@ export const LocalFoodCulturePage: React.FC = () => {
       description:
         'Indulge in Pani Pol (thin rolled crepes stuffed with sweet caramelized coconut and dark kitul palm treacle), crisp traditional sweetmeats, and freshly sliced seasonal papaya, sweet red bananas, and passion fruit.',
       tags: ['Kitul Treacle', 'Fresh Sliced Fruits', 'Dessert Delight'],
-      image: '/images/fruits.WEBP',
+      image: getAssetPath('/images/fruits.WEBP'),
     },
     {
       name: 'Fresh King Coconut (Thambili) & Spiced Tea',
@@ -135,7 +136,7 @@ export const LocalFoodCulturePage: React.FC = () => {
       description:
         'Quench your thirst with fresh, naturally sweet golden King Coconut water chopped before you on the street corner. Conclude your tasting tour with steaming Ceylon black tea brewed with fresh crushed ginger and aromatic spices.',
       tags: ['Natural Hydration', 'Artisanal Tea', 'Ceylon Grown'],
-      image: '/images/thabili.JPG',
+      image: getAssetPath('/images/thabili.JPG'),
     },
   ];
 
@@ -534,7 +535,7 @@ export const LocalFoodCulturePage: React.FC = () => {
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden border border-stone-200 shadow-md aspect-[4/3]">
                 <img
-                  src="/images/Village & Local Food Experience.WEBP"
+                  src={getAssetPath('/images/Village & Local Food Experience.WEBP')}
                   alt="Sri Lankan village life and community interaction"
                   className="w-full h-full object-cover"
                   loading="lazy"
