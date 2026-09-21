@@ -1,6 +1,6 @@
 /**
  * Resolves static asset paths taking into account Vite's base path
- * (e.g. for GitHub Pages project sites hosted under /Ceylon-Tuk-Tuk-Tours/)
+ * (e.g. for GitHub Pages project sites hosted under /Ceylon_Tuk_Tuk_Tours/)
  */
 export function getAssetPath(path: string | undefined | null): string {
   if (!path) return '';
@@ -14,13 +14,13 @@ export function getAssetPath(path: string | undefined | null): string {
     return path;
   }
 
-  let base = '/Ceylon-Tuk-Tuk-Tours/';
+  let base = '/Ceylon_Tuk_Tuk_Tours/';
   try {
     if (typeof import.meta !== 'undefined' && import.meta && import.meta.env && import.meta.env.BASE_URL) {
       base = import.meta.env.BASE_URL;
     }
   } catch {
-    base = '/Ceylon-Tuk-Tuk-Tours/';
+    base = '/Ceylon_Tuk_Tuk_Tours/';
   }
 
   const cleanBase = base.endsWith('/') ? base : `${base}/`;
