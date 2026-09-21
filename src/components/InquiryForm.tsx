@@ -133,52 +133,121 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({
 
     try {
       let dispatched = false;
+      const isStaticHosting =
+        typeof window !== 'undefined' &&
+        (window.location.hostname.includes('github.io') || window.location.protocol === 'file:');
 
-      // 1. Primary: Server-side API endpoint that dispatches notification to tours.ceylontuktuk@gmail.com
-      try {
-        const response = await fetch('/api/inquiry', {
+      const formspreePayload = {
+        ...payload,
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phoneWhatsapp,
+        tour: matchedTour,
+        preferredDate: formData.preferredDate || 'Flexible',
+        travelers: formData.travelerCount,
+        pickupLocation: formData.pickupLocation,
+        preferredVehicle: formData.preferredVehicle,
+        travelStyle: formData.travelStyle,
+        travelerType: formData.travelerType,
+        message: formData.message,
+        _subject: `New Tour Inquiry – ${matchedTour} (#${refNumber}) - ${formData.fullName}`,
+      };
+
+      // 1. Static Hosting (GitHub Pages): Post directly to Formspree
+      if (isStaticHosting && siteConfig.formEndpoint && siteConfig.formEndpoint.trim() !== '') {
+        const fsResponse = await fetch(siteConfig.formEndpoint, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
           },
-          body: JSON.stringify(payload),
+          body: JSON.stringify(formspreePayload),
         });
 
-        if (response.ok) {
-          const resData = await response.json();
-          if (resData.referenceNumber) {
-            setSubmissionReference(resData.referenceNumber);
+        if (fsResponse.ok) {
+          dispatched = true;
+        } else {
+          let errDetail = 'Form submission failed';
+          try {
+            const errData = await fsResponse.json();
+            if (errData?.errors && Array.isArray(errData.errors)) {
+              errDetail = errData.errors.map((e: any) => e.message).join(', ');
+            } else if (errData?.error) {
+              errDetail = errData.error;
+            }
+          } catch {
+            errDetail = `HTTP ${fsResponse.status} response from Formspree`;
           }
-          dispatched = true;
+          throw new Error(
+            `${errDetail}. Please contact Anthony directly via WhatsApp for immediate confirmation.`
+          );
         }
-      } catch (apiErr) {
-        console.warn('/api/inquiry call could not be reached, attempting fallback:', apiErr);
+      } else {
+        // 2. Google AI Studio preview / Local Express server:
+        // Try /api/inquiry first
+        try {
+          const response = await fetch('/api/inquiry', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify(payload),
+          });
+
+          if (response.ok) {
+            const resData = await response.json();
+            if (resData.referenceNumber) {
+              setSubmissionReference(resData.referenceNumber);
+            }
+            dispatched = true;
+          }
+        } catch (apiErr) {
+          console.warn('/api/inquiry call could not be reached, attempting direct Formspree fallback:', apiErr);
+        }
+
+        // Direct Formspree fallback if /api/inquiry was unreachable or failed
+        if (!dispatched && siteConfig.formEndpoint && siteConfig.formEndpoint.trim() !== '') {
+          const fbResponse = await fetch(siteConfig.formEndpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+            body: JSON.stringify(formspreePayload),
+          });
+
+          if (fbResponse.ok) {
+            dispatched = true;
+          } else {
+            let errDetail = 'Form submission failed';
+            try {
+              const errData = await fbResponse.json();
+              if (errData?.errors && Array.isArray(errData.errors)) {
+                errDetail = errData.errors.map((e: any) => e.message).join(', ');
+              } else if (errData?.error) {
+                errDetail = errData.error;
+              }
+            } catch {
+              errDetail = `HTTP ${fbResponse.status} response from Formspree`;
+            }
+            throw new Error(
+              `${errDetail}. Please contact Anthony directly via WhatsApp for immediate confirmation.`
+            );
+          }
+        }
       }
 
-      // 2. Secondary fallback: If custom siteConfig.formEndpoint was provided
-      if (!dispatched && siteConfig.formEndpoint && siteConfig.formEndpoint.trim() !== '') {
-        const fbResponse = await fetch(siteConfig.formEndpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify({
-            ...payload,
-            _subject: `New Website Inquiry – ${resolvedFormType} (#${refNumber})`,
-          }),
-        });
-
-        if (fbResponse.ok) {
-          dispatched = true;
+      // CRITICAL: Only display success after a confirmed 200 OK delivery
+      if (dispatched) {
+        setStatus('success');
+        if (onSuccess) {
+          onSuccess();
         }
-      }
-
-      // 3. Mark success
-      setStatus('success');
-      if (onSuccess) {
-        onSuccess();
+      } else {
+        throw new Error(
+          'Unable to submit your inquiry at this moment. Please use the WhatsApp button below for instant confirmation.'
+        );
       }
     } catch (err: any) {
       console.error('Submission error:', err);

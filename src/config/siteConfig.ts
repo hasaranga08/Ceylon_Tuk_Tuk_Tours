@@ -48,7 +48,7 @@ export const siteConfig: SiteConfig = {
    * or https://api.web3forms.com/submit or https://formsubmit.co/your-email@example.com).
    * If left blank, the website uses a built-in simulation with instant WhatsApp fallback.
    */
-  formEndpoint: '',
+  formEndpoint: 'https://formspree.io/f/xbgllnnq',
 
   socialLinks: {
     facebook: 'https://facebook.com/ceylontuktuktours',
