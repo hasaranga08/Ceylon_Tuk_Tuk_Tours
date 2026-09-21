@@ -1,0 +1,6 @@
+{
+  "name": "Ceylon Tuk Tuk Tours | Private Tuk Tuk Tours in Sri Lanka",
+  "description": "Ceylon Tuk Tuk Tours offers private Tuk Tuk tours and local experiences in Negombo, Colombo and beyond. Explore Sri Lanka with Anthony Appuhamy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
