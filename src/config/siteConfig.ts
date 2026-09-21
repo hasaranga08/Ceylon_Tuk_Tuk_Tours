@@ -638,7 +638,7 @@ export const vehiclesData: Vehicle[] = [
     name: 'Sri Lankan Tuk Tuk',
     type: 'Classic Three-Wheeler',
     capacity: 'Up to 3 adult passengers',
-    image: '/home.jpeg',
+    image: '/images/tuktuk.jpeg',
     description:
       'Perfect for local sightseeing and shorter private experiences.',
     features: [
@@ -654,7 +654,7 @@ export const vehiclesData: Vehicle[] = [
     name: 'Private Air-Conditioned Car',
     type: 'Comfortable Sedan',
     capacity: 'Up to 3-4 passengers with luggage',
-    image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800&auto=format&fit=crop',
+    image: '/images/car.jpg',
     description:
       'Comfortable option for couples, families and longer journeys.',
     features: [
@@ -670,7 +670,7 @@ export const vehiclesData: Vehicle[] = [
     name: 'Private Air-Conditioned Van',
     type: 'Spacious Passenger Van',
     capacity: 'Suitable for 4 to 8+ passengers with luggage',
-    image: '/images/tea_plantation.jpg',
+    image: '/images/kdh.jpg',
     description:
       'Suitable for families and larger groups traveling around Sri Lanka.',
     features: [
@@ -1580,7 +1580,7 @@ export const curiousTravelerFeaturesData: CuriousTravelerFeature[] = [
     title: 'Surf',
     description: 'Catch gentle beginner waves in Weligama or watch experienced riders along southern reef points.',
     iconName: 'Waves',
-    image: '/images/tropical_surf.jpg',
+    image: '/images/surf.jpg',
   },
   {
     id: 'beaches',
@@ -1608,7 +1608,7 @@ export const curiousTravelerFeaturesData: CuriousTravelerFeature[] = [
     title: 'Wildlife',
     description: 'Explore national park regions for wild elephants, spotted deer, peacocks, and rich birdlife.',
     iconName: 'Binoculars',
-    image: '/images/yala_wildlife.jpg',
+    image: '/images/wildlife.jpg',
   },
   {
     id: 'culture',
@@ -1622,14 +1622,14 @@ export const curiousTravelerFeaturesData: CuriousTravelerFeature[] = [
     title: 'Nightlife & Coastal Atmosphere',
     description: 'Unwind at beachfront cafés, acoustic live music sessions, and friendly sunset gathering spots.',
     iconName: 'Music',
-    image: '/images/weligama.jpg',
+    image: '/images/nightlife.png',
   },
   {
     id: 'hidden-experiences',
     title: 'Hidden Local Experiences',
     description: 'Venture off the main highway into peaceful village backroads, craft workshops, and spice gardens.',
     iconName: 'Sparkles',
-    image: '/images/tea_picker.jpg',
+    image: '/images/craft.jpg',
   },
 ];
 
