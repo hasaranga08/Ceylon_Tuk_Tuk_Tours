@@ -88,7 +88,7 @@ export const AboutPage: React.FC = () => {
           <div className="lg:col-span-6">
             <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/3] bg-stone-200 border border-stone-200">
               <img
-                src={getAssetPath('/images/fishing_boats.jpg')}
+                src={getAssetPath('/images/gallery/gallery1.jpeg')}
                 alt="Local Sri Lankan driver and fishermen community in Negombo"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -96,10 +96,10 @@ export const AboutPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
                 <span className="text-xs font-bold text-amber-400 uppercase tracking-wider block mb-1">
-                  Local Pride
+                  Happy Clients
                 </span>
                 <p className="text-xs sm:text-sm font-medium text-stone-200">
-                  Negombo beach fishermen preparing catamarans at sunrise.
+                  With a happy client in peaceful sandbar surrounded by coastal waters.
                 </p>
               </div>
             </div>
