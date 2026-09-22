@@ -127,6 +127,15 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <button
+                  id="footer-nav-gallery"
+                  onClick={() => navigateTo('gallery')}
+                  className="hover:text-amber-400 transition-colors text-stone-300"
+                >
+                  Photo Gallery
+                </button>
+              </li>
+              <li>
+                <button
                   id="footer-nav-about"
                   onClick={() => navigateTo('about')}
                   className="hover:text-amber-400 transition-colors text-stone-300"

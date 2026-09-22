@@ -202,6 +202,18 @@ export const Header: React.FC = () => {
             </button>
 
             <button
+              id="nav-gallery"
+              onClick={() => handleNavClick('gallery')}
+              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                currentPage === 'gallery'
+                  ? 'text-amber-700 bg-amber-50/80 font-bold'
+                  : 'text-stone-700 hover:text-amber-700 hover:bg-stone-100/60'
+              }`}
+            >
+              Gallery
+            </button>
+
+            <button
               id="nav-about"
               onClick={() => handleNavClick('about')}
               className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
@@ -368,11 +380,22 @@ export const Header: React.FC = () => {
               ))}
             </div>
 
-            <div className="grid grid-cols-2 gap-2 pt-1">
+            <div className="grid grid-cols-3 gap-2 pt-1">
+              <button
+                id="mobile-nav-gallery"
+                onClick={() => handleNavClick('gallery')}
+                className={`py-2.5 px-2 rounded-xl text-center text-xs sm:text-sm font-bold ${
+                  currentPage === 'gallery'
+                    ? 'bg-amber-100/80 text-amber-900 border border-amber-300/60'
+                    : 'bg-stone-100 text-stone-800'
+                }`}
+              >
+                Gallery
+              </button>
               <button
                 id="mobile-nav-about"
                 onClick={() => handleNavClick('about')}
-                className={`py-2.5 px-3 rounded-xl text-left text-sm font-bold ${
+                className={`py-2.5 px-2 rounded-xl text-center text-xs sm:text-sm font-bold ${
                   currentPage === 'about'
                     ? 'bg-amber-100/80 text-amber-900 border border-amber-300/60'
                     : 'bg-stone-100 text-stone-800'
@@ -383,13 +406,13 @@ export const Header: React.FC = () => {
               <button
                 id="mobile-nav-contact"
                 onClick={() => handleNavClick('contact')}
-                className={`py-2.5 px-3 rounded-xl text-left text-sm font-bold ${
+                className={`py-2.5 px-2 rounded-xl text-center text-xs sm:text-sm font-bold ${
                   currentPage === 'contact'
                     ? 'bg-amber-100/80 text-amber-900 border border-amber-300/60'
                     : 'bg-stone-100 text-stone-800'
                 }`}
               >
-                Contact & Map
+                Contact
               </button>
             </div>
 

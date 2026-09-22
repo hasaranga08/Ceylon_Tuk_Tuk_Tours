@@ -1818,3 +1818,5 @@ resolveAssetPaths(southCoastActivitiesData);
 resolveAssetPaths(curiousTravelerFeaturesData);
 resolveAssetPaths(experienceHighlights);
 
+export { galleryItems, galleryCategories } from '../data/galleryData';
+

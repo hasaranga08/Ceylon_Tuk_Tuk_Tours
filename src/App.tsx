@@ -22,6 +22,7 @@ import { LocalFoodCulturePage } from './pages/LocalFoodCulturePage';
 import { PrivateToursPage } from './pages/PrivateToursPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
+import { GalleryPage } from './pages/GalleryPage';
 
 const AppContent: React.FC = () => {
   const { currentPage } = useNavigation();
@@ -48,6 +49,8 @@ const AppContent: React.FC = () => {
       case 'sri-lanka-private-tours':
       case 'private-sri-lanka-tours':
         return <PrivateToursPage />;
+      case 'gallery':
+        return <GalleryPage />;
       case 'about':
         return <AboutPage />;
       case 'contact':

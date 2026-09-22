@@ -50,6 +50,8 @@ export const StructuredData: React.FC = () => {
           ? 'About Our Guides'
           : currentPage === 'contact'
           ? 'Contact Tour Guides'
+          : currentPage === 'gallery'
+          ? 'Photo Gallery'
           : currentPage;
 
         const pageUrl = isToursCatalog

@@ -36,6 +36,7 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         'local-food-culture-experience',
         'sri-lanka-private-tours',
         'private-sri-lanka-tours',
+        'gallery',
         'about',
         'contact',
       ];
@@ -93,6 +94,11 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       description =
         'Custom private day tours from Negombo to Sigiriya Rock, Kandy, Galle Fort, and Bandaranaike Airport transfers. Choice of comfortable private car, van, or classic Tuk Tuk.';
       canonical = 'https://ceylontuktuktours.com/#/sri-lanka-private-tours';
+    } else if (currentPage === 'gallery') {
+      title = `Photo Gallery – Sri Lanka Tour Moments & Sights | ${siteConfig.businessName}`;
+      description =
+        'Browse photos of authentic private Tuk Tuk tours, Negombo fishing beaches, coastal lagoons, wildlife safaris, and culture across Sri Lanka with Anthony Appuhamy.';
+      canonical = 'https://ceylontuktuktours.com/#/gallery';
     } else if (currentPage === 'about') {
       title = `About Our Local TukTuk Guides in Negombo | ${siteConfig.businessName}`;
       description =

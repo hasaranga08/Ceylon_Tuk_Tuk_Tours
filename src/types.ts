@@ -11,6 +11,7 @@ export type PageId =
   | 'local-food-culture-experience'
   | 'sri-lanka-private-tours'
   | 'private-sri-lanka-tours'
+  | 'gallery'
   | 'about'
   | 'contact';
 
@@ -207,4 +208,24 @@ export interface SiteConfig {
   };
   operatingHours: string;
   currenciesAccepted: string[];
+}
+
+export type GalleryCategory =
+  | 'All'
+  | 'Tuk Tuk Tours'
+  | 'Negombo'
+  | 'Sri Lanka'
+  | 'Beaches'
+  | 'Culture'
+  | 'Wildlife'
+  | 'Hill Country'
+  | 'Food & Local Life';
+
+export interface GalleryItem {
+  id: string;
+  filename: string;
+  category: GalleryCategory;
+  title: string;
+  caption: string;
+  altText: string;
 }
