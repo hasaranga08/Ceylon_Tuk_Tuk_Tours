@@ -25,7 +25,7 @@ function githubPagesPlugin(): Plugin {
 
 export default defineConfig(() => {
   return {
-    base: '/Ceylon_Tuk_Tuk_Tours/',
+    base: './',
     plugins: [react(), tailwindcss(), githubPagesPlugin()],
     resolve: {
       alias: {

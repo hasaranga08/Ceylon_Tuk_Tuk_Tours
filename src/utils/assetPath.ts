@@ -1,6 +1,7 @@
 /**
- * Resolves static asset paths taking into account Vite's base path
- * (e.g. for GitHub Pages project sites hosted under /Ceylon_Tuk_Tuk_Tours/)
+ * Resolves static asset paths taking into account Vite's base path and deployment target:
+ * - On custom domain (ceylontuktuktours.com.lk) or localhost/preview -> root path (/images/...)
+ * - On GitHub Pages project subpath (/Ceylon_Tuk_Tuk_Tours/) -> (/Ceylon_Tuk_Tuk_Tours/images/...)
  */
 export function getAssetPath(path: string | undefined | null): string {
   if (!path) return '';
@@ -14,25 +15,25 @@ export function getAssetPath(path: string | undefined | null): string {
     return path;
   }
 
-  let base = '/Ceylon_Tuk_Tuk_Tours/';
-  try {
-    if (typeof import.meta !== 'undefined' && import.meta && import.meta.env && import.meta.env.BASE_URL) {
-      base = import.meta.env.BASE_URL;
+  // Strip leading ./ or /
+  let cleanPath = path.replace(/^\.?\//, '');
+
+  // If path was already prefixed with Ceylon_Tuk_Tuk_Tours/, strip it so we don't duplicate
+  if (cleanPath.startsWith('Ceylon_Tuk_Tuk_Tours/')) {
+    cleanPath = cleanPath.slice('Ceylon_Tuk_Tuk_Tours/'.length);
+  }
+
+  // Determine runtime base path dynamically based on browser location
+  if (typeof window !== 'undefined' && window.location && window.location.pathname) {
+    if (window.location.pathname.startsWith('/Ceylon_Tuk_Tuk_Tours')) {
+      return `/Ceylon_Tuk_Tuk_Tours/${cleanPath}`;
     }
-  } catch {
-    base = '/Ceylon_Tuk_Tuk_Tours/';
+    // Custom domain (ceylontuktuktours.com.lk), root domain, or local/preview
+    return `/${cleanPath}`;
   }
 
-  const cleanBase = base.endsWith('/') ? base : `${base}/`;
-  const baseWithoutLeadingSlash = cleanBase.startsWith('/') ? cleanBase.slice(1) : cleanBase;
-
-  // If already prefixed with base, return with leading slash
-  if (cleanBase !== '/' && (path.startsWith(cleanBase) || path.startsWith(baseWithoutLeadingSlash))) {
-    return path.startsWith('/') ? path : `/${path}`;
-  }
-
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-  return `${cleanBase}${cleanPath}`;
+  // Fallback for SSR or build-time evaluation
+  return `./${cleanPath}`;
 }
 
 /**

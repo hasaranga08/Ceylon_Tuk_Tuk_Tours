@@ -135,7 +135,9 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({
       let dispatched = false;
       const isStaticHosting =
         typeof window !== 'undefined' &&
-        (window.location.hostname.includes('github.io') || window.location.protocol === 'file:');
+        (window.location.hostname.includes('github.io') ||
+          window.location.hostname.includes('ceylontuktuktours') ||
+          window.location.protocol === 'file:');
 
       const formspreePayload = {
         ...payload,
