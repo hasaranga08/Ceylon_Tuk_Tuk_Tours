@@ -10,27 +10,11 @@ function githubPagesPlugin(): Plugin {
     closeBundle() {
       const distDir = path.resolve(__dirname, 'dist');
       const indexPath = path.join(distDir, 'index.html');
+      const notFoundPath = path.join(distDir, '404.html');
       const noJekyllPath = path.join(distDir, '.nojekyll');
 
-      const routes = [
-        'tuk-tuk-tours-sri-lanka',
-        'negombo-tuk-tuk-tour',
-        'negombo-city-tour',
-        'colombo-city-tour',
-        'negombo-lagoon-tour',
-        'local-food-culture-tour',
-        'sri-lanka-private-tours',
-        'gallery',
-        'about',
-        'contact',
-      ];
-
       if (fs.existsSync(indexPath)) {
-        for (const route of routes) {
-          const routeDir = path.join(distDir, route);
-          fs.mkdirSync(routeDir, { recursive: true });
-          fs.copyFileSync(indexPath, path.join(routeDir, 'index.html'));
-        }
+        fs.copyFileSync(indexPath, notFoundPath);
       }
 
       if (!fs.existsSync(noJekyllPath)) {
