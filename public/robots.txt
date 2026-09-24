@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ceylontuktuktours.com/sitemap.xml
+Sitemap: https://ceylontuktuktours.com.lk/sitemap.xml
