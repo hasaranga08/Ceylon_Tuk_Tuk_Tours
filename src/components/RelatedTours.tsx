@@ -69,7 +69,7 @@ export const RelatedTours: React.FC<RelatedToursProps> = ({ currentTourSlug }) =
                 {tour.location}
               </span>
               <a
-                href={`#/${tour.slug}`}
+                href={`/${tour.slug}`}
                 onClick={(e) => {
                   e.preventDefault();
                   navigateTo(tour.slug);
