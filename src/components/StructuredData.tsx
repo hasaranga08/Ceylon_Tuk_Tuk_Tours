@@ -29,21 +29,25 @@ export const StructuredData: React.FC = () => {
           t.id === currentPage ||
           (currentPage === 'local-food-culture-experience' && t.slug === 'local-food-culture-tour')
       );
+
       if (tour) {
         breadcrumbItems.push({
           '@type': 'ListItem',
           position: 2,
           name: 'Sri Lanka TukTuk Tours',
-          item: 'https://ceylontuktuktours.com.lk/#/tuk-tuk-tours-sri-lanka',
+          item: 'https://ceylontuktuktours.com.lk/tuk-tuk-tours-sri-lanka',
         });
+
         breadcrumbItems.push({
           '@type': 'ListItem',
           position: 3,
           name: tour.shortTitle,
-          item: `https://ceylontuktuktours.com.lk/#/${tour.slug}`,
+          item: `https://ceylontuktuktours.com.lk/${tour.slug}`,
         });
       } else {
-        const isToursCatalog = currentPage === 'tours' || currentPage === 'tuk-tuk-tours-sri-lanka';
+        const isToursCatalog =
+          currentPage === 'tours' || currentPage === 'tuk-tuk-tours-sri-lanka';
+
         const pageName = isToursCatalog
           ? 'Sri Lanka TukTuk Tours'
           : currentPage === 'about'
@@ -55,8 +59,8 @@ export const StructuredData: React.FC = () => {
           : currentPage;
 
         const pageUrl = isToursCatalog
-          ? 'https://ceylontuktuktours.com.lk/#/tuk-tuk-tours-sri-lanka'
-          : `https://ceylontuktuktours.com.lk/#/${currentPage}`;
+          ? 'https://ceylontuktuktours.com.lk/tuk-tuk-tours-sri-lanka'
+          : `https://ceylontuktuktours.com.lk/${currentPage}`;
 
         breadcrumbItems.push({
           '@type': 'ListItem',
@@ -80,6 +84,7 @@ export const StructuredData: React.FC = () => {
         t.id === currentPage ||
         (currentPage === 'local-food-culture-experience' && t.slug === 'local-food-culture-tour')
     );
+
     if (activeTour) {
       scriptsToAdd.push({
         '@context': 'https://schema.org',
@@ -110,7 +115,9 @@ export const StructuredData: React.FC = () => {
 
     // 3. FAQPage Schema strictly for pages where the visible FAQ section is rendered
     const hasVisibleFaq =
-      currentPage === 'home' || currentPage === 'tours' || currentPage === 'tuk-tuk-tours-sri-lanka';
+      currentPage === 'home' ||
+      currentPage === 'tours' ||
+      currentPage === 'tuk-tuk-tours-sri-lanka';
 
     if (hasVisibleFaq) {
       scriptsToAdd.push({
