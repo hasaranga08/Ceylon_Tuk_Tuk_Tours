@@ -18,7 +18,7 @@ export const StructuredData: React.FC = () => {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://ceylontuktuktours.com/',
+        item: 'https://ceylontuktuktours.com.lk/',
       },
     ];
 
@@ -34,13 +34,13 @@ export const StructuredData: React.FC = () => {
           '@type': 'ListItem',
           position: 2,
           name: 'Sri Lanka TukTuk Tours',
-          item: 'https://ceylontuktuktours.com/#/tuk-tuk-tours-sri-lanka',
+          item: 'https://ceylontuktuktours.com.lk/#/tuk-tuk-tours-sri-lanka',
         });
         breadcrumbItems.push({
           '@type': 'ListItem',
           position: 3,
           name: tour.shortTitle,
-          item: `https://ceylontuktuktours.com/#/${tour.slug}`,
+          item: `https://ceylontuktuktours.com.lk/#/${tour.slug}`,
         });
       } else {
         const isToursCatalog = currentPage === 'tours' || currentPage === 'tuk-tuk-tours-sri-lanka';
@@ -55,8 +55,8 @@ export const StructuredData: React.FC = () => {
           : currentPage;
 
         const pageUrl = isToursCatalog
-          ? 'https://ceylontuktuktours.com/#/tuk-tuk-tours-sri-lanka'
-          : `https://ceylontuktuktours.com/#/${currentPage}`;
+          ? 'https://ceylontuktuktours.com.lk/#/tuk-tuk-tours-sri-lanka'
+          : `https://ceylontuktuktours.com.lk/#/${currentPage}`;
 
         breadcrumbItems.push({
           '@type': 'ListItem',
@@ -95,7 +95,7 @@ export const StructuredData: React.FC = () => {
         provider: {
           '@type': 'TravelAgency',
           name: siteConfig.businessName,
-          image: 'https://ceylontuktuktours.com/logo.png',
+          image: 'https://ceylontuktuktours.com.lk/logo.png',
           telephone: '+94776067981',
           email: siteConfig.email,
         },
