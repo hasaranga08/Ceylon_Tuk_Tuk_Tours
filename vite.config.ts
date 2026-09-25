@@ -35,7 +35,15 @@ function githubPagesPlugin(): Plugin {
 
           const routeHtml = indexHtml
             .replaceAll('./assets/', '../assets/')
-            .replaceAll('./logo.png', '../logo.png');
+            .replaceAll('./logo.png', '../logo.png')
+            .replace(
+              '<link rel="canonical" href="https://ceylontuktuktours.com.lk/" />',
+              `<link rel="canonical" href="https://ceylontuktuktours.com.lk/${route}/" />`
+            )
+            .replace(
+              '<meta property="og:url" content="https://ceylontuktuktours.com.lk/" />',
+              `<meta property="og:url" content="https://ceylontuktuktours.com.lk/${route}/" />`
+            );
 
           fs.writeFileSync(
             path.join(routeDir, 'index.html'),
@@ -68,3 +76,4 @@ export default defineConfig(() => {
     },
   };
 });
+```
